@@ -1,12 +1,11 @@
-import React from 'react';
-
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import { AppRoutes } from "./routes";
 
 export const App = () => {
   return (
-    <>
-     <p>Teste</p>
-    </>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   );
-}
-
-
+};
