@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function App() {
+export const App = () => {
   return (
     <>
      <p>Teste</p>
@@ -9,4 +9,4 @@ function App() {
   );
 }
 
-export default App;
+
