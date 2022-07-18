@@ -1,46 +1,33 @@
-import { createContext, useCallback, useMemo, useState, useContext } from 'react';
-import { ThemeProvider } from '@emotion/react';
-import { LightTheme, DarkTheme } from '../themes';
-import { Box } from '@mui/system';
+import { createContext, useCallback, useState, useContext } from 'react';
+
+interface IDrawerContextData {
+    isDrawerOpen: boolean
+    toggleDrawerOpen: () => void}
 
 
-interface IThemeContextData {
-    themeName: 'light' | 'dark'
-    toggleTheme: () => void}
-
-
-const DrawerContext = createContext({} as IThemeContextData);
+const DrawerContext = createContext({} as IDrawerContextData);
 
 interface IThemeProviderProps {
     children: React.ReactNode;
 }
 
-export const useAppThemeContext = () => {
+export const useDrawerContext = () => {
   return useContext(DrawerContext);
 };
 
 // eslint-disable-next-line react/prop-types
-export const AppThemeProvider: React.FC<IThemeProviderProps> = ({ children }) => {
+export const DrawerProvider: React.FC<IThemeProviderProps> = ({ children }) => {
 
-  const [themeName, setThemeName] = useState<'light' | 'dark'>('light');
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  const toggleTheme = useCallback((() => {
-    setThemeName(oldThemeName => oldThemeName === 'light' ? 'dark' : 'light');
+  const toggleDrawerOpen = useCallback((() => {
+    setIsDrawerOpen(oldDrawerOpen => !oldDrawerOpen);
   }), []);
 
-  const theme = useMemo(() => {
-    if(themeName === 'light') return LightTheme;
-
-    return DarkTheme;
-  }, [themeName]);
 
   return (
-    <DrawerContext.Provider value={{ themeName, toggleTheme }}>
-      <ThemeProvider theme={theme}>
-        <Box width="100vw" height="100vh" bgcolor={theme.palette.background.default}>
-          {children}
-        </Box>
-      </ThemeProvider>
+    <DrawerContext.Provider value={{ isDrawerOpen, toggleDrawerOpen }}>
+      {children}
     </DrawerContext.Provider>
   );
 };
