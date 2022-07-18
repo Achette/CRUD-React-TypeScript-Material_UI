@@ -7,6 +7,7 @@ import { LateralMenu } from './shared/components';
 
 export const App = () => {
   return (
+    
     <AppThemeProvider>
       <BrowserRouter>
 

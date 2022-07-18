@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { TramSharp } from '@mui/icons-material';
-import { Avatar, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useTheme } from '@mui/material';
+import { Avatar, Divider, Drawer, Icon, List, ListItemButton, ListItemIcon, ListItemText, useMediaQuery, useTheme } from '@mui/material';
 import { Box } from '@mui/system';
 
 interface IDrawerProps {
@@ -10,10 +10,11 @@ interface IDrawerProps {
 export const LateralMenu: React.FC<IDrawerProps> = ({ children }) => {
 
   const theme = useTheme();
+  const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
     <>
-      <Drawer variant='permanent'>
+      <Drawer open={true} variant={smDown ? 'temporary' : 'permanent'}>
         <Box  width={theme.spacing(28)} height="100%" display="flex" flexDirection="column">
 
           <Box width="100%" height={theme.spacing(20)} display="flex" alignItems="center" justifyContent="center">
@@ -38,7 +39,7 @@ export const LateralMenu: React.FC<IDrawerProps> = ({ children }) => {
         </Box>
       </Drawer>
 
-      <Box height="100vh" marginLeft={theme.spacing(28)}>
+      <Box height="100vh" marginLeft={smDown ? 0 : theme.spacing(28)}>
         {children}
       </Box>
     </>
