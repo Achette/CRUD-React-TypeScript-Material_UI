@@ -1,6 +1,6 @@
 import { Box, Button, Icon, Paper, TextField, useTheme } from '@mui/material';
 
-type IToolbarProps = {
+type IListToolProps = {
     searchText?: string;
     showInputSearch?: boolean;
     toggleSearchText?: (newText: string) => void;
@@ -9,13 +9,13 @@ type IToolbarProps = {
     onClickButton?: () => void;
 }
 
-export const Toolbar = ({ 
+export const ListTool = ({ 
   searchText = '', 
   showInputSearch = false, 
   toggleSearchText, 
   buttonNew = 'New', 
   showButton = true, 
-  onClickButton }: IToolbarProps) => {
+  onClickButton }: IListToolProps) => {
 
   const theme = useTheme();
 
