@@ -7,7 +7,7 @@ export const Dashboard = () => {
 
 
   return (
-    <BasicPageLayout title='Homepage'>
+    <BasicPageLayout title='Homepage' toolBar={<>ToolBar</>}>
         Testando
     </BasicPageLayout>
   );
