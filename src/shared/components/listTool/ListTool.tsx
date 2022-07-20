@@ -4,7 +4,7 @@ type IListToolProps = {
     searchText?: string;
     showInputSearch?: boolean;
     toggleSearchText?: (newText: string) => void;
-    buttonNew?: string;
+    buttonTxt?: string;
     showButton?: boolean;
     onClickButton?: () => void;
 }
@@ -13,7 +13,7 @@ export const ListTool = ({
   searchText = '', 
   showInputSearch = false, 
   toggleSearchText, 
-  buttonNew = 'New', 
+  buttonTxt = 'New', 
   showButton = true, 
   onClickButton }: IListToolProps) => {
 
@@ -47,7 +47,7 @@ export const ListTool = ({
             color="primary" 
             endIcon={<Icon>add</Icon>}
             onClick={onClickButton}
-          >{buttonNew}</Button>
+          >{buttonTxt}</Button>
         )}
       </Box>
     </Box>
