@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Icon, Paper, useTheme } from '@mui/material';
+import { Box, Button, Divider, Icon, Paper, Skeleton, useTheme } from '@mui/material';
 
 type IDetailToolsProps = {
   buttonTextNew?: string;
@@ -7,6 +7,12 @@ type IDetailToolsProps = {
   showButtonBack?: boolean;
   showButtonSave?: boolean;
   showButtonSaveAndClose?: boolean;
+
+  showButtonNewLoading?: boolean;
+  showButtonDeleteLoading?: boolean;
+  showButtonBackLoading?: boolean;
+  showButtonSaveLoading?: boolean;
+  showButtonSaveAndCloseLoading?: boolean;
 
   onClickNew?: () => void;
   onClickBack?: () => void;
@@ -21,7 +27,13 @@ export const DetailTools = ({
   showButtonBack = true,
   showButtonDelete = true,
   showButtonSave = true,
-  showButtonSaveAndClose = false,
+  showButtonSaveAndClose = true,
+
+  showButtonNewLoading = false,
+  showButtonBackLoading = false,
+  showButtonDeleteLoading = false,
+  showButtonSaveLoading = false,
+  showButtonSaveAndCloseLoading = false,
 
   onClickNew,
   onClickBack,
@@ -43,7 +55,7 @@ export const DetailTools = ({
       alignItems="center" 
       component={Paper}
     >
-      {showButtonSave && (
+      {(showButtonSave && !showButtonSaveLoading) && (
         <Button 
           variant="contained" 
           disableElevation 
@@ -53,7 +65,9 @@ export const DetailTools = ({
         >Save</Button>
       )}
 
-      {showButtonSaveAndClose && (
+      {showButtonSaveLoading && (<Skeleton width={110} height={60}/>)}
+
+      {(showButtonSaveAndClose && !showButtonSaveAndCloseLoading) && (
         <Button 
           variant="outlined" 
           disableElevation 
@@ -63,7 +77,9 @@ export const DetailTools = ({
         >Save and go back</Button>
       )}
 
-      {showButtonDelete && (
+      {showButtonSaveAndCloseLoading && (<Skeleton width={180} height={60}/>)}
+
+      {(showButtonDelete && !showButtonDeleteLoading) && (
         <Button 
           variant="outlined" 
           disableElevation 
@@ -73,7 +89,9 @@ export const DetailTools = ({
         >Delete</Button>
       )}
 
-      {showButtonNew && (
+      {showButtonDeleteLoading && (<Skeleton width={110} height={60}/>)}
+
+      {(showButtonNew && !showButtonNewLoading) && (
         <Button 
           variant="outlined" 
           disableElevation 
@@ -83,9 +101,11 @@ export const DetailTools = ({
         >{buttonTextNew}</Button>
       )}
 
+      {showButtonNewLoading && (<Skeleton width={110} height={60}/>)}
+
       <Divider variant="middle" orientation="vertical"/>
 
-      {showButtonBack && (
+      {(showButtonBack && !showButtonBackLoading) && (
         <Button 
           variant="outlined" 
           disableElevation 
@@ -93,7 +113,9 @@ export const DetailTools = ({
           onClick={onClickBack}
           startIcon={<Icon>arrow_back</Icon>}
         >Back</Button> 
-      )}   
+      )}
+
+      {showButtonBackLoading && (<Skeleton width={110} height={60}/>)}
 
     </Box>
   );
