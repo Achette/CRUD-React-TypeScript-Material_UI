@@ -1,4 +1,5 @@
 import { Box, Button, Icon, Paper, TextField, useTheme } from '@mui/material';
+import { Enviroment } from '../../environment';
 
 type IListToolProps = {
     searchText?: string;
@@ -33,7 +34,7 @@ export const ListTool = ({
       {showInputSearch && (
         <TextField 
           size="small" 
-          placeholder='Search...' 
+          placeholder={Enviroment.INPUT_DE_BUSCA}
           value={searchText} 
           onChange={(e) => toggleSearchText?.(e.target.value)}
         />
