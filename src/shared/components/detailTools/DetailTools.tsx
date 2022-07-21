@@ -1,8 +1,34 @@
 import { Box, Button, Divider, Icon, Paper, useTheme } from '@mui/material';
 
+type IDetailToolsProps = {
+  buttonTextNew?: string;
+  showButtonNew?: boolean;
+  showButtonDelete?: boolean;
+  showButtonBack?: boolean;
+  showButtonSave?: boolean;
+  showButtonSaveAndClose?: boolean;
 
+  onClickNew?: () => void;
+  onClickBack?: () => void;
+  onClickDelete?: () => void;
+  onClickSave?: () => void;
+  onClickSaveAndClose?: () => void;
+}
 
-export const DetailTools = () => {
+export const DetailTools = ({ 
+  buttonTextNew = 'NEW', 
+  showButtonNew = true,
+  showButtonBack = true,
+  showButtonDelete = true,
+  showButtonSave = true,
+  showButtonSaveAndClose = false,
+
+  onClickNew,
+  onClickBack,
+  onClickDelete,
+  onClickSave,
+  onClickSaveAndClose,
+}: IDetailToolsProps) => {
 
   const theme = useTheme();
 
@@ -17,42 +43,57 @@ export const DetailTools = () => {
       alignItems="center" 
       component={Paper}
     >
-      <Button 
-        variant="contained" 
-        disableElevation 
-        color="primary" 
-        startIcon={<Icon>save</Icon>}
-      >Save</Button>
+      {showButtonSave && (
+        <Button 
+          variant="contained" 
+          disableElevation 
+          color="primary" 
+          onClick={onClickSave}
+          startIcon={<Icon>save</Icon>}
+        >Save</Button>
+      )}
 
-      <Button 
-        variant="outlined" 
-        disableElevation 
-        color="primary" 
-        startIcon={<Icon>save</Icon>}
-      >Save and go back</Button>
+      {showButtonSaveAndClose && (
+        <Button 
+          variant="outlined" 
+          disableElevation 
+          color="primary" 
+          onClick={onClickSaveAndClose}
+          startIcon={<Icon>save</Icon>}
+        >Save and go back</Button>
+      )}
 
-      <Button 
-        variant="outlined" 
-        disableElevation 
-        color="primary" 
-        startIcon={<Icon>delete</Icon>}
-      >Delete</Button>
+      {showButtonDelete && (
+        <Button 
+          variant="outlined" 
+          disableElevation 
+          color="primary" 
+          onClick={onClickDelete}
+          startIcon={<Icon>delete</Icon>}
+        >Delete</Button>
+      )}
 
-      <Button 
-        variant="outlined" 
-        disableElevation 
-        color="primary" 
-        startIcon={<Icon>add</Icon>}
-      >New</Button>
+      {showButtonNew && (
+        <Button 
+          variant="outlined" 
+          disableElevation 
+          color="primary" 
+          onClick={onClickNew}
+          startIcon={<Icon>add</Icon>}
+        >{buttonTextNew}</Button>
+      )}
 
       <Divider variant="middle" orientation="vertical"/>
 
-      <Button 
-        variant="outlined" 
-        disableElevation 
-        color="primary" 
-        startIcon={<Icon>arrow_back</Icon>}
-      >Go back</Button>    
+      {showButtonBack && (
+        <Button 
+          variant="outlined" 
+          disableElevation 
+          color="primary" 
+          onClick={onClickBack}
+          startIcon={<Icon>arrow_back</Icon>}
+        >Back</Button> 
+      )}   
 
     </Box>
   );
