@@ -9,7 +9,7 @@ export const Dashboard = () => {
 
   return (
     <BasicPageLayout title='Homepage' toolBar={(
-      <DetailTools  />
+      <DetailTools  showButtonSaveAndClose/>
     )}>
         Testando
     </BasicPageLayout>
