@@ -4,7 +4,7 @@ import { ReactNode } from 'react';
 import { useDrawerContext } from '../contexts';
 
 type IBasicPageLayout = {
-    children: React.ReactNode;
+    children?: React.ReactNode;
     title: string;
     toolBar?: ReactNode;
 
