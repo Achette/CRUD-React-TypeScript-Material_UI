@@ -82,7 +82,7 @@ export const DetailTools = ({
           startIcon={<Icon>save</Icon>}
         >
           <Typography variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden'>
-            Save and Back
+            Save and Close
           </Typography>
         </Button>
       )}
