@@ -2,13 +2,9 @@
   "pessoas": [
     {
       "id": "1",
-      "nome": "Igor",
-      "sobrenome": "Achette"
-    },
-    {
-      "id": 2,
-      "nome": "Jorge",
-      "sobrenome": "Silva"
+      "fullName": "Igor Achette",
+      "email": "i.achette@live.com",
+      "idCity": 25
     }
   ]
 }
